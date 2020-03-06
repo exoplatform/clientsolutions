@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009 eXo Platform SAS.
+
+    This is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 2.1 of
+    the License, or (at your option) any later version.
+
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should ≤≥have received a copy of the GNU Lesser General Public
+    License along with this software; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>addons-parent-pom</artifactId>
+    <groupId>org.exoplatform.addons</groupId>
+    <version>9</version>
+  </parent>
+  <groupId>org.exoplatform.clientsolutions.extension</groupId>
+  <artifactId>exo-clientsolutions-parent</artifactId>
+  <version>1.0.x-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Client Solution extension for customer Project</name>
+  <description>Client Solution extension for customer Project</description>
+  
+  <modules>
+    <module>war</module>
+    <module>packaging</module>
+  </modules>
+ 
+  <scm>
+    <connection>scm:git:git://github.com/exoplatform/clientsolutions.git</connection>
+    <developerConnection>scm:git:git@github.com:exoplatform/clientsolutions.git</developerConnection>
+    <tag>HEAD</tag>
+    <url>https://github.com/exoplatform/clientsolutions</url>
+  </scm>
+
+  <properties>
+<!-- Defaut compiler settings -->
+    <maven.compiler.optimize>true</maven.compiler.optimize>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <org.exoplatform.depmgt.version>16.1</org.exoplatform.depmgt.version>
+    <org.exoplatform.platform.version>5.3.1</org.exoplatform.platform.version>
+    <functional-administration.addon.version>1.2.3</functional-administration.addon.version>
+    <import-users-csv.addon.version>1.2.5</import-users-csv.addon.version>
+  </properties>
+  <dependencyManagement>
+    <dependencies>
+      <!-- Import versions from platform project -->
+      <dependency>
+        <groupId>org.exoplatform.platform</groupId>
+        <artifactId>platform</artifactId>
+        <version>${org.exoplatform.platform.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform</groupId>
+        <artifactId>maven-depmgt-pom</artifactId>
+        <version>${org.exoplatform.depmgt.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.clientsolutions.extension</groupId>
+        <artifactId>exo-clientsolutions-extension-war</artifactId>
+        <type>war</type>
+        <scope>provided</scope>
+        <version>${project.version}</version>
+      </dependency>
+      <!-- Add dependencies for addons -->
+      <dependency>
+        <groupId>org.exoplatform.addons.functional-configuration</groupId>
+        <artifactId>functional-configuration-service</artifactId>
+        <version>${functional-administration.addon.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.functional-configuration</groupId>
+        <artifactId>functional-configuration-webapp</artifactId>
+        <version>${functional-administration.addon.version}</version>
+        <type>war</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.functional-configuration</groupId>
+        <artifactId>functional-configuration-portlets</artifactId>
+        <version>${functional-administration.addon.version}</version>
+        <type>war</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.import-users-csv</groupId>
+        <artifactId>import-users-csv-webapps</artifactId>
+        <version>${import-users-csv.addon.version}</version>
+        <type>war</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.import-users-csv</groupId>
+        <artifactId>import-users-csv-service</artifactId>
+        <version>${import-users-csv.addon.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.skype</groupId>
+        <artifactId>web-conferencing-skype-services</artifactId>
+        <version>${skype.addon.version}</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>org.exoplatform.addons.skype</groupId>
+        <artifactId>web-conferencing-skype-webapp</artifactId>
+        <version>${skype.addon.version}</version>
+        <type>war</type>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>

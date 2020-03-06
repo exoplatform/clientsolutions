@@ -1,0 +1,66 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>exo-clientsolutions-extension-addon</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <dependencySets>
+        <!-- client solutions extension war -->
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>webapps</outputDirectory>
+            <includes>
+                <include>${project.groupId}:exo-clientsolutions-extension-war:war</include>
+            </includes>
+            <scope>provided</scope>
+            <outputFileNameMapping>clientsolutions-extension.war</outputFileNameMapping>
+        </dependencySet>
+        <!-- Libraries -->
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+                <include>org.exoplatform.addons.functional-configuration:functional-configuration-service:jar</include>
+            </includes>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
+        </dependencySet>
+
+        <!-- webapps -->
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>webapps</outputDirectory>
+            <includes>
+                <include>org.exoplatform.addons.functional-configuration:functional-configuration-webapp:war</include>
+            </includes>
+            <outputFileNameMapping>functional-configuration.war</outputFileNameMapping>
+        </dependencySet>
+        <dependencySet>
+            <useProjectArtifact>false</useProjectArtifact>
+            <outputDirectory>webapps</outputDirectory>
+            <includes>
+                <include>org.exoplatform.addons.functional-configuration:functional-configuration-portlets:war</include>
+            </includes>
+            <outputFileNameMapping>functional-configuration-portlets.war</outputFileNameMapping>
+        </dependencySet>
+        <!-- Import users from CSV -->
+        <dependencySet>
+            <outputDirectory>webapps</outputDirectory>
+            <includes>
+                <include>org.exoplatform.addons.import-users-csv:import-users-csv-webapps:war</include>
+            </includes>
+            <scope>runtime</scope>
+            <outputFileNameMapping>import-users-csv.war</outputFileNameMapping>
+            <useProjectArtifact>false</useProjectArtifact>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <includes>
+                <include>org.exoplatform.addons.import-users-csv:import-users-csv-service:jar</include>
+            </includes>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+</assembly>
